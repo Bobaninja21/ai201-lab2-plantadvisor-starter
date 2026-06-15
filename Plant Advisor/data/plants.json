@@ -1,0 +1,64 @@
+{
+  "pothos": {
+    "display_name": "Pothos",
+    "scientific_name": "Epipremnum aureum",
+    "aliases": ["golden pothos", "devil's ivy", "hunter's robe", "silver vine"],
+    "difficulty": "easy",
+    "watering": {
+      "frequency": "every 1–2 weeks",
+      "description": "Allow the top inch of soil to dry out between waterings. Drooping leaves are a reliable signal it's time to water.",
+      "overwatering_signs": ["yellowing leaves", "mushy stems", "root rot", "gnats in soil"],
+      "underwatering_signs": ["wilting", "dry brown leaf tips", "crispy edges", "soil pulling away from pot edges"]
+    },
+    "light": {
+      "requirement": "low to bright indirect",
+      "description": "Highly adaptable. Thrives in bright indirect light but tolerates low light. Direct sun will scorch the leaves.",
+      "avoid": "direct sunlight"
+    },
+    "humidity": "tolerant of average household humidity (40–60%)",
+    "temperature": "65–85°F (18–29°C)",
+    "fertilizing": "monthly during spring and summer with a balanced liquid fertilizer; stop in fall and winter",
+    "common_issues": [
+      "yellowing leaves from overwatering",
+      "leggy and sparse growth in low light",
+      "brown tips from inconsistent watering or dry air"
+    ],
+    "seasonal_notes": {
+      "spring": "Resume fertilizing. Increase watering frequency as growth picks up.",
+      "summer": "Water more frequently. Watch for fungus gnats if soil stays too wet.",
+      "fall": "Taper off fertilizer. Start reducing watering frequency.",
+      "winter": "Water sparingly. Bright indirect light becomes more important. No fertilizer."
+    }
+  },
+  "snake_plant": {
+    "display_name": "Snake Plant",
+    "scientific_name": "Dracaena trifasciata",
+    "aliases": ["sansevieria", "mother-in-law's tongue", "saint george's sword", "viper's bowstring hemp"],
+    "difficulty": "easy",
+    "watering": {
+      "frequency": "every 2–6 weeks depending on season",
+      "description": "One of the most drought-tolerant houseplants. Allow soil to dry completely between waterings. When in doubt, wait.",
+      "overwatering_signs": ["mushy base", "yellowing leaves at the base", "root rot", "soft spots on leaves"],
+      "underwatering_signs": ["wrinkled or curling leaves", "dry brown tips", "leaves leaning outward"]
+    },
+    "light": {
+      "requirement": "low to bright indirect",
+      "description": "Survives almost anywhere. Grows fastest in bright indirect light but is genuinely one of the best low-light plants.",
+      "avoid": "prolonged direct sunlight in summer"
+    },
+    "humidity": "low humidity tolerant — thrives in typical dry indoor environments",
+    "temperature": "60–80°F (15–27°C); avoid temperatures below 50°F",
+    "fertilizing": "2–3 times per year during the growing season; never in winter",
+    "common_issues": [
+      "root rot from overwatering — the most common cause of death",
+      "brown tips from fluoride in tap water or physical damage",
+      "slow growth in low light (normal, not a problem)"
+    ],
+    "seasonal_notes": {
+      "spring": "Repot if root-bound. Begin light fertilizing.",
+      "summer": "Water slightly more often. Check for spider mites in hot dry conditions.",
+      "fall": "Reduce watering significantly.",
+      "winter": "Water once a month or less. Keep away from cold drafts."
+    }
+  }
+}

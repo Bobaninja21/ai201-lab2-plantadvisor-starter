@@ -132,4 +132,61 @@ def run_agent(user_message: str, history: list) -> str:
 
     Before writing code, complete specs/agent-loop-spec.md.
     """
-    return "🌱 Agent not yet implemented. Complete Milestone 2 to activate the Plant Advisor."
+    # Build the messages list: system prompt + conversation history + new user message
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    
+    # Gradio ChatInterface sends history as tuples (user_msg, bot_msg), not dicts
+    # Convert each tuple pair to proper role/content messages
+    for user_msg, bot_msg in history:
+        if user_msg:
+            messages.append({"role": "user", "content": user_msg})
+        if bot_msg:
+            messages.append({"role": "assistant", "content": bot_msg})
+    
+    messages.append({"role": "user", "content": user_message})
+    
+    # Agent loop: call LLM, execute tool calls, repeat until done or MAX_TOOL_ROUNDS
+    for round_num in range(MAX_TOOL_ROUNDS):
+        print(f"\n[Round {round_num + 1}]")
+        
+        # Call the LLM with available tools
+        response = _client.chat.completions.create(
+            model=LLM_MODEL,
+            messages=messages,
+            tools=TOOL_DEFINITIONS,
+            tool_choice="auto",
+        )
+        
+        assistant_message = response.choices[0].message
+        
+        # Check if the LLM made any tool calls
+        if not assistant_message.tool_calls:
+            # No tool calls — LLM has a final answer
+            print("[No more tool calls — returning response]")
+            return assistant_message.content or "I'm unable to provide a response at this time."
+        
+        # Append the assistant message (with tool calls) to messages
+        messages.append(assistant_message)
+        
+        # Execute each tool call and append results
+        for tool_call in assistant_message.tool_calls:
+            tool_name = tool_call.function.name
+            raw_args = tool_call.function.arguments
+            # Normalize arguments: if None or JSON null, use empty dict
+            tool_args = json.loads(raw_args) if raw_args else {}
+            if not isinstance(tool_args, dict):
+                tool_args = {}
+            
+            # Execute the tool
+            tool_result = dispatch_tool(tool_name, tool_args)
+            
+            # Append the tool result to messages
+            messages.append({
+                "role": "tool",
+                "tool_call_id": tool_call.id,
+                "content": tool_result,
+            })
+    
+    # If we've exhausted MAX_TOOL_ROUNDS, return the last response we have
+    print(f"\n[MAX_TOOL_ROUNDS ({MAX_TOOL_ROUNDS}) reached — returning response]")
+    return assistant_message.content or "I've reached the tool call limit. Please try rephrasing your question."

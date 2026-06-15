@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plant Advisor — AI210 Local</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <h1>🌿 Plant Advisor</h1>
+      <p>Ask about any plant in the database by common name, scientific name, or nickname.</p>
+      <section>
+        <h2>Plants in the database</h2>
+        <ul id="plant-list"></ul>
+      </section>
+      <section>
+        <h2>Example questions</h2>
+        <ul class="examples" id="example-list"></ul>
+      </section>
+    </aside>
+
+    <main class="main-content">
+      <div class="chat-panel">
+        <div class="chat-header">
+          <h2>Chat with Plant Advisor</h2>
+          <p>Type a question and get a locally generated plant care summary.</p>
+        </div>
+        <div id="chat-log" class="chat-log"></div>
+        <form id="chat-form" class="chat-form">
+          <textarea id="user-input" placeholder="e.g. How often should I water my monstera?" rows="3"></textarea>
+          <button type="submit">Ask</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
