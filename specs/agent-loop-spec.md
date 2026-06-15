@@ -129,7 +129,7 @@ for tool_call in assistant_message.tool_calls:
 *The loop should stop when: (a) the LLM returns a response with no tool calls, OR (b) the MAX_TOOL_ROUNDS limit is reached. Describe how you will detect each condition and what you will return in each case.*
 
 ```
-[your answer here]
+The loop detects no more tool calls when `assistant_message.tool_calls` is empty or falsy after a model response. In that case, it returns `assistant_message.content` as the final answer. If the loop reaches `MAX_TOOL_ROUNDS` without a final response, it returns the last assistant content if present, otherwise a fallback message explaining that the tool call limit was reached.
 ```
 
 ---
@@ -139,7 +139,7 @@ for tool_call in assistant_message.tool_calls:
 *Once the loop exits because there are no more tool calls, how do you extract the text content from the response object? What field holds the string you should return?*
 
 ```
-[your answer here]
+Use `response.choices[0].message.content` from the final model response. The `assistant_message.content` field holds the text string to return.
 ```
 
 ---
@@ -152,19 +152,19 @@ for tool_call in assistant_message.tool_calls:
 
 ```
 Query: "How should I care for my calathea?"
-Round 1 tool call: [tool name, args]
-Round 2 tool call: [tool name, args] (if any)
-Final response: [brief description]
+Round 1 tool call: lookup_plant({"plant_name": "calathea"})
+Round 2 tool call: get_seasonal_conditions({"season": null})
+Final response: A plant care summary for Calathea with current seasonal guidance.
 ```
 
 **What happens when you ask about a plant that isn't in the database?**
 
 ```
-[describe the behavior you observed]
+The agent reports the plant is not found in the database and offers general plant care advice or asks for more details.
 ```
 
 **One thing about the tool call API that surprised you:**
 
 ```
-[your answer here]
+The assistant message containing tool_calls must be appended to the messages list before appending tool result messages, or the tool results will not be linked to the correct call.
 ```

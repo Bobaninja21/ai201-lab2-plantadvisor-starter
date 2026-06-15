@@ -70,9 +70,9 @@ Tool functions (`tools.py`) are pure data retrieval — they take arguments and 
 | Tool definitions (schemas) | `agent.py` | ✅ Complete | (built) |
 | Tool dispatch | `agent.py` | ✅ Complete | (built) |
 | System prompt | `agent.py` | ✅ Complete | (built) |
-| `lookup_plant()` | `tools.py` | 🔲 Student spec + implementation | Milestone 1 |
-| `get_seasonal_conditions()` | `tools.py` | 🔲 Student spec + implementation | Milestone 1 |
-| `run_agent()` | `agent.py` | 🔲 Student spec + implementation | Milestone 2 |
+| `lookup_plant()` | `tools.py` | ✅ Implemented | Milestone 1 |
+| `get_seasonal_conditions()` | `tools.py` | ✅ Implemented | Milestone 1 |
+| `run_agent()` | `agent.py` | ✅ Implemented | Milestone 2 |
 | Graceful degradation | `tools.py` + `agent.py` | 🔲 Student analysis + improvement | Milestone 3 |
 
 ---

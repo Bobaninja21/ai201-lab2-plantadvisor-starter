@@ -2,7 +2,7 @@
 
 A conversational agent that helps users care for their houseplants. Ask it anything about a plant in its database and it will look up the care requirements, check the current seasonal context, and give you specific, grounded advice.
 
-The app is built and running. The agent isn't functional yet — that's the lab.
+The app is built and running. The agent logic has been implemented and can look up plants and seasonal care information using tool calls.
 
 ---
 
@@ -42,11 +42,12 @@ Plant Advisor will open in your browser. The chat interface works, but the agent
 ai201-lab2-plantadvisor-starter/
 ├── app.py              ← Gradio UI (complete — do not modify)
 ├── config.py           ← API keys and settings (complete)
-├── agent.py            ← Tool definitions + run_agent() to implement
-├── tools.py            ← lookup_plant() and get_seasonal_conditions() to implement
+├── agent.py            ← Tool definitions + run_agent() implementation
+├── tools.py            ← lookup_plant() and get_seasonal_conditions() implementation
 ├── data/
 │   ├── plants.json     ← 15-plant database (complete)
 │   └── seasons.json    ← Seasonal care data (complete)
+├── Plant Advisor/      ← Offline static site copy
 ├── specs/
 │   ├── system-design.md        ← Start here
 │   ├── tool-functions-spec.md  ← Complete before Milestone 1
